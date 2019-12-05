@@ -1,0 +1,307 @@
+package FinalProject112519;
+
+
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+//creating class called ProjectDriver
+public class PracticeDriver {
+	
+	//main method
+	public static void main(String args[]) {	
+		
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		Book book1 = new Book("J. K. Rowling", "The Philosopher's Stone", "Fantasy",2);
+        Book book2 = new Book("J. K. Rowling", "The Chamber of Secrets", "Fantasy",3);
+        Book book3 = new Book("J. K. Rowling", "The Prisoner of Azkaban", "Fantasy", 4);
+        Book book4 = new Book("J. K. Rowling", "The Goblet of Fire", "Fantasy", 5);
+        Book book5 = new Book("J. K. Rowling", "The Order of the Phoenix", "Fantasy", 3);
+        Book book6 = new Book("J. K. Rowling", "The Half-Blood Prince", "Fantasy", 6);
+        Book book7 = new Book("J. K. Rowling", "The Deathly Hallows", "Fantasy", 7);
+        Book book8 = new Book("Nicholas Sparks", "The Notebook", "Romance", 4);
+        Book book9 = new Book("John Green", "The Fault in Our Stars", "Romance", 9);
+        Book book10 = new Book("Colleen Hover", "It Ends with Us", "Romance", 8);
+        Book book11 = new Book("Margaret Mitchell", "Gone with the Wind", "Romance", 10);
+        Book book12 = new Book("Me Before You", "Jojo Moyes", "Romance", 3);
+        Book book13 = new Book("Jeff Kinney", "Diary of a Wimpy Kid", "Young adult fiction", 5);
+        Book book14 = new Book("Jeff Kinney", "Diary of a Wimpy Kid: Wrecking Ball", "Young adult fiction", 3);
+        Book book15 = new Book("Jeff Kinney", "Diary of a Wimpy Kid: The Last Straw", "Young adult fiction", 4);
+        Book book16 = new Book("Joey Comeau", "The Summer Is Ended and We Are Not Yet Saved", "Horror", 7);
+        Book book17 = new Book("Michael Talbot", "Night Things", "Horror", 5);
+        Book book18 = new Book("Stephen King", "The Stand", "Horror", 2);
+        Book book19 = new Book("Walter Mosley", "Down the River unto the Sea", "Crime", 6);
+        Book book20 = new Book("Steve Hamilton", "Exit Strategy", "Crime", 5);
+        Book book21 = new Book("Khaled Hosseini", "The Kite Runner", "Drama", 3);
+        Book book22 = new Book("Harper Lee", "To Kill a Mockingbird", "Drama", 4);
+        Book book23 = new Book("Dennis Lehane", "Shutter Island", "Mystery", 2);
+        Book book24 = new Book("George Orwell", "1984", "Science Fiction", 5);
+        Book book25 = new Book("Dan Simmons", "Hyperion", "Science Fiction", 4);
+        Book book26 = new Book("Ursula K. Le Guin", "The Left Hand of Darkness", "Science Fiction", 3);
+        Book book27 = new Book("Masashi Kishimoto", "Naruto", "Anime", 5);
+        Book book28 = new Book("Nelson Mandela", "Long Walk to Freedom", "Autobiography", 2);
+        Book book29 = new Book("Anne Frank", "The Diary of a Young Girl", "Autobiography", 3);
+        Book book30 = new Book("Barack Obama", "Dreams from my Father", "Autobiography", 5);
+        
+        bookList.add(book1);
+        bookList.add(book2);
+        bookList.add(book3);
+        bookList.add(book4);
+        bookList.add(book5);
+        bookList.add(book6);
+        bookList.add(book7);
+        bookList.add(book8);
+        bookList.add(book9);
+        bookList.add(book10);
+        bookList.add(book11);
+        bookList.add(book12);
+        bookList.add(book13);
+        bookList.add(book14);
+        bookList.add(book15);
+        bookList.add(book16);
+        bookList.add(book17);
+        bookList.add(book18);
+        bookList.add(book19);
+        bookList.add(book20);
+        bookList.add(book21);
+        bookList.add(book22);
+        bookList.add(book23);
+        bookList.add(book24);
+        bookList.add(book25);
+        bookList.add(book26);
+        bookList.add(book27);
+        bookList.add(book28);
+        bookList.add(book29);
+        bookList.add(book30);
+        
+		//declaring input an object of the Scanner class
+		Scanner input= new Scanner(System.in);  //https://www.google.com/search?q=hpw+to+ask+an+user+for+input+in+java&oq=hpw+to+ask+an+user+for+input+in+java&aqs=chrome..69i57j0l2.7518j0j9&sourceid=chrome&ie=UTF-8
+		
+		BookHandler bookHandlerObj = new BookHandler();
+		bookHandlerObj.createBookList();
+		bookHandlerObj.displayBooks();
+		bookHandlerObj.createBookListFile();
+		bookHandlerObj.createCheckedOutFile();
+		bookHandlerObj.createCheckedOutList();
+		
+		User user = new User();
+		UserHandler userHandlerObj = new UserHandler();
+		userHandlerObj.createUserList();
+		userHandlerObj.createUserListFile();
+		
+				
+		//******userHandlerObj.checkinBook("The Notebook");
+		//The while loop executes a block of code while a boolean expression evaluates to true
+		boolean condition = true;
+		while(condition == true){
+
+			// output for menu, prints the items below.
+	        System.out.println("-------------------------\n"); // "/n" = Insert a newline in the text at this point.
+			System.out.println("Welcome to Simran and Aakash's Library");
+			System.out.println("Press 1 for User Login");
+			System.out.println("Press 2 for Library Admin");
+			System.out.println("Press 3 to Exit the Library");
+				
+			// takes in the input from the user as an Int.
+			//creating variable to hold values
+			
+			int registration;
+			registration = input.nextInt();
+			//String throwaway = input.nextLine();
+			 
+			switch (registration) {
+			
+			//case 1 goes with the println = press 1 for User Login
+			case 1:
+				Scanner userScan = new Scanner(System.in);
+				System.out.println("Please enter username");
+				String username1 = userScan.nextLine();
+				
+				System.out.println("Please enter password");
+				String pass1 = userScan.nextLine();
+				
+				if (userHandlerObj.checkUser(username1, pass1))
+					{
+					Scanner userScan1 = new Scanner(System.in);
+					
+					System.out.println("Write SA to Search by Author");
+					System.out.println("Write ST to Search by Title");
+					System.out.println("Write SG to Search by Genre");
+					System.out.println("Write CI to Check In a Book");
+					System.out.println("Write CO to Check Out a Book");
+										
+					String userText = userScan1.nextLine();
+					
+					if (userText.equals("SA")) {
+						System.out.println("Enter in Author:");
+						String author = userScan1.nextLine();
+						bookHandlerObj.searchByAuthor(bookList, author);
+
+					}
+					else if (userText.equals("ST")) {
+						System.out.println("Enter in Title:");
+						String title = userScan1.nextLine();
+						bookHandlerObj.searchByTitle(bookList, title);
+					}
+					else if(userText.equals("SG")) {
+						System.out.println("Enter in Genre:");
+						String genre = userScan1.nextLine();
+						bookHandlerObj.searchByGenre(bookList, genre);
+					}
+					else if (userText.equals("CI")){
+						System.out.println("Enter in the title to check in a book");
+						String title = userScan1.nextLine();
+						userHandlerObj.checkinBook(title);
+					}
+					else if (userText.equals("CO")) {
+						System.out.println("Enter in the title to check out a book");
+						String title = userScan1.nextLine();
+						userHandlerObj.checkoutBook(title);	
+						//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+						Book checkedOutObject = new Book(username1, title);
+						bookHandlerObj.addBookToCheckedOutFile(checkedOutObject, title);
+					}
+				}
+				
+				else {
+					System.out.println("Incorrect: Please enter in username and password again by clicking 1 on the menu");	
+				}
+					break;
+					
+			// case 2 goes with println = press 2 for Library Admin
+			case 2:
+				System.out.println("Please provide Admin login");	
+				String adminUsername = input.next();				
+				
+				//instead of "admin" need to actually call something that holds all of the admin usernames.
+					if (adminUsername.equals("admin"))
+				{			
+					Scanner adminScan = new Scanner(System.in);
+					Scanner copiesScan = new Scanner(System.in);					
+					
+					System.out.println("Write A for Add Book");
+					System.out.println("Write R for Remove Book");
+					System.out.println("Write SA to Search by Author");
+					System.out.println("Write ST to Search by Title");
+					System.out.println("Write SG to Search by Genre");
+					System.out.println("Write CU to Create a New User");
+					System.out.println("Write RU to Remove a User");
+					System.out.println("Write CI to Check In a Book");
+					System.out.println("Write CO to Check Out a Book");
+					System.out.println("Write L to list all books");
+					
+					String text6 = adminScan.nextLine();
+										
+					if (text6.equals("A")) {
+					System.out.println("Enter in author to add:");
+					//bookToAdd is holding in the user input
+					String authorToAdd = adminScan.nextLine();				
+					
+					System.out.println("Enter in title:");
+					String bookToAdd = adminScan.nextLine();
+									
+					System.out.println("Enter in genre");
+					String genreToAdd = adminScan.nextLine();
+					
+					System.out.println("Enter in number of copies");
+					int numOfCopies = copiesScan.nextInt();
+								
+					Book bookObject = new Book(authorToAdd, bookToAdd, genreToAdd, numOfCopies);
+					bookHandlerObj.addBooktoBookFile(bookObject);
+					} 	
+					else if (text6.equals("R")) {
+						System.out.println("Enter in a title to remove: ");
+						String bookTitle2 = adminScan.nextLine();
+						bookHandlerObj.removeBookByTitle(bookTitle2);	
+					}		
+					else if(text6.equals("SA")) {
+						System.out.println("Enter in Author:");
+						String author = adminScan.nextLine();
+						bookHandlerObj.searchByAuthor(bookList, author);
+						
+					}
+					else if (text6.equals("ST")) {
+						System.out.println("Enter in Title:");
+						String title = adminScan.nextLine();
+						bookHandlerObj.searchByTitle(bookList, title);
+					}
+					else if(text6.equals("SG")) {
+						System.out.println("Enter in Genre:");
+						String genre = adminScan.nextLine();
+						bookHandlerObj.searchByGenre(bookList, genre);
+					}
+					//create a new user
+					else if(text6.equals("CU")){
+						System.out.println("Enter First and Last Name");
+						String nameToAdd = adminScan.nextLine();
+						
+						System.out.println("Please create username");
+						String usernameToAdd = adminScan.nextLine();
+						
+						//create new password
+						System.out.println("Please create password");
+						String passwordToAdd = adminScan.nextLine();		 		
+						User userObject = new User(nameToAdd, usernameToAdd, passwordToAdd);
+						userHandlerObj.addUserToFile(userObject);						
+					}
+					//remove a user
+					else if (text6.equals("RU")) {
+						System.out.println("Enter in a user name to remove: ");
+						String userName2 = adminScan.nextLine();
+						userHandlerObj.removeUserbyUsername(userName2);
+					}
+					else if (text6.equals("L")) {
+		                for(int i = 0; i<bookList.size(); i++) {
+		                        System.out.println(bookList.get(i));
+		                }  
+					}
+					else if (text6.equals("CI")){						
+						/*
+						System.out.println("Enter the user name of who is checking in");
+						String name = adminScan.nextLine();
+					*/
+						System.out.println("Enter in the title to check in a book");
+						String title = adminScan.nextLine();
+						userHandlerObj.checkinBook(title);
+						
+						bookHandlerObj.removeBookfromCheckedOutFile(title);
+						
+					}
+					else if (text6.equals("CO")) {
+						System.out.println("Enter the user name of who is checking out");
+						String nameOfPerson = adminScan.nextLine();
+						System.out.println("Enter in the title to check out a book");
+						String title = adminScan.nextLine();
+						userHandlerObj.checkoutBook(title);
+						//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+						Book checkedOutObject = new Book(nameOfPerson, title );
+						bookHandlerObj.addBookToCheckedOutFile(checkedOutObject, title );
+					}
+					else {
+						System.out.println("something went wrong");
+					}	
+				}
+					break;					
+			case 3:
+				System.out.println("Exit");
+				String text5 = input.nextLine();
+				System.out.println("Thank you for stopping by at Simran & Aakash's Library");
+				break;
+			default:
+				System.out.println("Please try again");
+				String text6 = input.nextLine();
+				break;
+			}
+		}
+		
+	    }
+		 
+	}
+	
+	
+
+
+
